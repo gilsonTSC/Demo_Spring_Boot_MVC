@@ -1,0 +1,47 @@
+package com.example.curso.boot.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.curso.boot.dao.CargoDao;
+import com.example.curso.boot.domain.Cargo;
+
+@Service
+public class CargoServiceImpl implements CargoService{
+
+	@Autowired
+	private CargoDao dao;
+	
+	@Override
+	@Transactional
+	public void salvar(Cargo cargo) {
+		this.dao.save(cargo);
+	}
+
+	@Override
+	@Transactional
+	public void editar(Cargo cargo) {
+		this.dao.update(cargo);
+	}
+
+	@Override
+	@Transactional
+	public void excluir(Long id) {
+		this.dao.delete(id);
+	}
+
+	@Override
+	public Cargo buscarPorId(Long id) {
+		return this.dao.findById(id);
+	}
+
+	@Override
+	public List<Cargo> buscarTotos() {
+		return this.dao.findAll();
+	}
+
+}
