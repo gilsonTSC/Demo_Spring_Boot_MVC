@@ -40,7 +40,7 @@ public class CargoServiceImpl implements CargoService{
 	}
 
 	@Override
-	public List<Cargo> buscarTotos() {
+	public List<Cargo> buscarTodos() {
 		return this.dao.findAll();
 	}
 
