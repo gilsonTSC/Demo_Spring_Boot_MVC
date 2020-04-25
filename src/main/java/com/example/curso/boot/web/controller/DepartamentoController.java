@@ -47,4 +47,16 @@ public class DepartamentoController {
 		return "redirect:/departamentos/cadastrar";
 	}
 	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, ModelMap model) {
+		if (this.service.depertamentoTemCargos(id)) {
+			model.addAttribute("fail", "Departamento não removido. Possui cargo(s) vinculado(s).");
+		} else {
+			this.service.excluir(id);
+			model.addAttribute("success", "Departamento excluído com sucesso.");
+		}
+		
+		return listar(model);
+	}
+	
 }
