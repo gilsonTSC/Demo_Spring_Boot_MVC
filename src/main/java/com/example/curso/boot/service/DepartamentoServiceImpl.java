@@ -45,7 +45,7 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 	}
 
 	@Override
-	public boolean depertamentoTemCargos(Long id) {
+	public boolean departamentoTemCargos(Long id) {
 		if(this.buscarPorId(id).getCargos().isEmpty()) {// SE A LISTA FOR VAZIA.
 			return false;
 		}
