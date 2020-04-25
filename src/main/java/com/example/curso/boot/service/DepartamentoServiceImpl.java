@@ -40,7 +40,7 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 	}
 
 	@Override
-	public List<Departamento> buscarTotos() {
+	public List<Departamento> buscarTodos() {
 		return this.dao.findAll();
 	}
 
