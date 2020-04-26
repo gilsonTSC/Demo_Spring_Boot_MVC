@@ -14,5 +14,6 @@ public interface FuncionarioService {
 	
 	Funcionario buscarPorId(Long id);
 	
-	List<Funcionario> buscarTotos();
+	List<Funcionario> buscarTodos();
+	
 }

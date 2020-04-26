@@ -40,7 +40,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 	}
 
 	@Override
-	public List<Funcionario> buscarTotos() {
+	public List<Funcionario> buscarTodos() {
 		return this.dao.findAll();
 	}
 
