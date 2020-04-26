@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name= "ENDERACOS")
+@Table(name= "ENDERECOS")
 public class Endereco extends AbstractEntity<Long>{
 
 	@Column(nullable= false)
@@ -25,7 +25,7 @@ public class Endereco extends AbstractEntity<Long>{
 	private UF uf;
 	
 	@Column(nullable= false, length = 9)
-	private String cet;
+	private String cep;
 	
 	@Column(nullable= false, length = 5)
 	private Integer numero;
@@ -64,12 +64,12 @@ public class Endereco extends AbstractEntity<Long>{
 		this.uf = uf;
 	}
 
-	public String getCet() {
-		return cet;
+	public String getCep() {
+		return this.cep;
 	}
 
-	public void setCet(String cet) {
-		this.cet = cet;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public Integer getNumero() {
