@@ -78,6 +78,12 @@ public class FuncionarioController {
 		return this.cargoService.buscarTodos();
 	}
 	
+	@GetMapping("/buscar/cargo")
+	public String getPorCargo(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("funcionarios", funcionarioService.buscarPorCargo(id));
+		return "/funcionario/lista";
+	}
+	
 	@ModelAttribute("ufs")
 	public UF[] getUFs() {
 		return UF.values();
