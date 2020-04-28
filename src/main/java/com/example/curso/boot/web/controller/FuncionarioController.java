@@ -44,19 +44,19 @@ public class FuncionarioController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Funcionario funcionario) {
-		return "/funcionario/cadastro";
+		return "funcionario/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("funcionarios", funcionarioService.buscarTodos());
-		return "/funcionario/lista"; 
+		return "funcionario/lista"; 
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/funcionario/cadastro";
+			return "funcionario/cadastro";
 		}
 		this.funcionarioService.salvar(funcionario);
 		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
@@ -72,7 +72,7 @@ public class FuncionarioController {
 	@PostMapping("/editar")
 	public String editar(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/funcionario/cadastro";
+			return "funcionario/cadastro";
 		}
 		this.funcionarioService.editar(funcionario);
 		attr.addFlashAttribute("success", "Funcionário editado com sucesso.");
@@ -89,7 +89,7 @@ public class FuncionarioController {
 	@GetMapping("/buscar/nome")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {		
 		model.addAttribute("funcionarios", this.funcionarioService.buscarPorNome(nome));
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@GetMapping("/buscar/data")
@@ -98,7 +98,7 @@ public class FuncionarioController {
                               ModelMap model) {
 
         model.addAttribute("funcionarios", funcionarioService.buscarPorDatas(entrada, saida));
-        return "/funcionario/lista";
+        return "funcionario/lista";
     }
 	
 	@ModelAttribute("cargos")
@@ -109,7 +109,7 @@ public class FuncionarioController {
 	@GetMapping("/buscar/cargo")
 	public String getPorCargo(@RequestParam("id") Long id, ModelMap model) {
 		model.addAttribute("funcionarios", funcionarioService.buscarPorCargo(id));
-		return "/funcionario/lista";
+		return "funcionario/lista";
 	}
 	
 	@ModelAttribute("ufs")
