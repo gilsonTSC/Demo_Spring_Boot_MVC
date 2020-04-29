@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.curso.boot.dao.CargoDao;
 import com.example.curso.boot.domain.Cargo;
+import com.example.curso.boot.util.PaginacaoUtil;
 
 @Service
 public class CargoServiceImpl implements CargoService{
@@ -50,6 +51,11 @@ public class CargoServiceImpl implements CargoService{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public PaginacaoUtil<Cargo> buscarPorPagina(int pagina, String direcao) {
+		return this.dao.buscaPaginada(pagina, direcao);
 	}
 
 }

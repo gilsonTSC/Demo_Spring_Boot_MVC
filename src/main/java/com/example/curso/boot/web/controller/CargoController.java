@@ -1,6 +1,7 @@
 package com.example.curso.boot.web.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.curso.boot.domain.Cargo;
 import com.example.curso.boot.domain.Departamento;
 import com.example.curso.boot.service.CargoService;
 import com.example.curso.boot.service.DepartamentoService;
+import com.example.curso.boot.util.PaginacaoUtil;
 
 @Controller
 @RequestMapping("/cargos")
@@ -36,8 +39,15 @@ public class CargoController {
 	}
 	
 	@GetMapping("/listar")
-	public String listar(ModelMap model) {
-		model.addAttribute("cargos", this.cargoService.buscarTodos());
+	public String listar(ModelMap model, 
+						@RequestParam("page") Optional<Integer> page, 
+						@RequestParam("dir") Optional<String> dir) {
+		int paginaAtual = page.orElse(1);// SE O OPTIONAL NÃO TIVER UM INTEGER VAI TRAZER O VALOR NO ORELSE.
+		String ordem = dir.orElse("asc");		
+		
+		PaginacaoUtil<Cargo> pageCargo = this.cargoService.buscarPorPagina(paginaAtual, ordem);
+		
+		model.addAttribute("pageCargo", pageCargo);
 		return "cargo/lista";
 	}
 	
