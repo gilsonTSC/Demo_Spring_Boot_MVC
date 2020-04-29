@@ -11,7 +11,7 @@ import com.example.curso.boot.util.PaginacaoUtil;
 public class CargoDaoImpl extends AbstractDao<Cargo, Long> implements CargoDao {
 
 	public PaginacaoUtil<Cargo> buscaPaginada(int pagina, String direcao) {
-		int tamanho = 1;
+		int tamanho = 5;
 		int inicio = (pagina - 1) * tamanho; // 0*5=0 1*5=5 2*5=10
 		List<Cargo> cargos = getEntityManager()
 				.createQuery("select c from Cargo c order by c.nome " + direcao, Cargo.class)

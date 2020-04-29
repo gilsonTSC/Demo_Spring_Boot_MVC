@@ -29,7 +29,13 @@
 	                    <thead>
 	                    <tr>
 	                        <th>#</th>
-	                        <th th:text="#{tabela.funcionario.col.cargo}"></th>
+	                        <th>
+	                        	<a class="" th:href="@{/cargos/listar(page=${pageCargo.pagina}, dir=desc)}" tabindex="-1">
+	                        	<span class="oi oi-arrow-bottom"></span></a>
+	                        	<span th:text="#{tabela.funcionario.col.cargo}"></span>
+	                        	<a class="" th:href="@{/cargos/listar(page=${pageCargo.pagina}, dir=asc)}"tabindex="-1">
+	                        	<span class="oi oi-arrow-top"></span></a>
+	                        </th>
 	                        <th th:text="#{tabela.funcionario.col.departamento}"></th>
 	                        <th th:text="#{tabela.funcionario.col.acao}"></th>
 	                    </tr>
